@@ -7,6 +7,7 @@ Offers the following endpoints for Article Resource access:
 - GET all articles at `http://127.0.0.1:8080/user/articles`
 - POST an article at `http://127.0.0.1:8080/users/article`
 - PUT an article at `http://127.0.0.1:8080/users/article`
+
 To check the format of requests as JSON and response check the screenshot located at: `src/main/resources`.
 
 ## Setup
