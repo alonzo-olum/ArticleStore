@@ -20,8 +20,7 @@ public class ArticleDAO implements IArticleDAO {
 	public Article getArticleById(int articleId) {
 		String sql = "SELECT articleId, title, category FROM articles WHERE articleId = ?";
 		RowMapper<Article> rowMapper = new BeanPropertyRowMapper<Article>(Article.class);
-		Article article = jdbcTemplate.queryForObject(sql, rowMapper, articleId);
-		return article;
+        return jdbcTemplate.queryForObject(sql, rowMapper, articleId);
 	}
 
 	@Override
@@ -62,10 +61,6 @@ public class ArticleDAO implements IArticleDAO {
 	public boolean articleExists(String title, String category) {
 		String sql = "SELECT count(*) FROM articles WHERE title = ? and category=?";
 		int count = jdbcTemplate.queryForObject(sql, Integer.class, title, category);
-		if(count == 0) {
-    		return false;
-		} else {
-			return true;
-		}
+        return (count == 0) ? false : true;
 	}
 }

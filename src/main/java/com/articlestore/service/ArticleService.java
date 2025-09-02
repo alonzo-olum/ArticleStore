@@ -10,15 +10,17 @@ import java.util.List;
 public class ArticleService implements IArticleService {
 	@Autowired
 	private IArticleDAO articleDAO;
+
 	@Override
 	public Article getArticleById(int articleId) {
-		Article obj = articleDAO.getArticleById(articleId);
-		return obj;
-	}	
+        return articleDAO.getArticleById(articleId);
+	}
+
 	@Override
 	public List<Article> getAllArticles(){
 		return articleDAO.getAllArticles();
 	}
+
 	@Override
 	public synchronized boolean addArticle(Article article){
        if (articleDAO.articleExists(article.getTitle(), article.getCategory())) {
@@ -28,10 +30,12 @@ public class ArticleService implements IArticleService {
     	   return true;
        }
 	}
+
 	@Override
 	public void updateArticle(Article article) {
 		articleDAO.updateArticle(article);
 	}
+
 	@Override
 	public void deleteArticle(int articleId) {
 		articleDAO.deleteArticle(articleId);
