@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.articlestore.entity.Article;
 import com.articlestore.entity.ArticleRowMapper;
+
 @Transactional
 @Repository
 public class ArticleDAO implements IArticleDAO {
