@@ -20,14 +20,13 @@ public class ArticleDAO implements IArticleDAO {
 	@Override
 	public Article getArticleById(int articleId) {
 		String sql = "SELECT articleId, title, category FROM articles WHERE articleId = ?";
-		RowMapper<Article> rowMapper = new BeanPropertyRowMapper<Article>(Article.class);
+		RowMapper<Article> rowMapper = new BeanPropertyRowMapper<>(Article.class);
         return jdbcTemplate.queryForObject(sql, rowMapper, articleId);
 	}
 
 	@Override
 	public List<Article> getAllArticles() {
 		String sql = "SELECT articleId, title, category FROM articles";
-        //RowMapper<Article> rowMapper = new BeanPropertyRowMapper<Article>(Article.class);
 		RowMapper<Article> rowMapper = new ArticleRowMapper();
 		return this.jdbcTemplate.query(sql, rowMapper);
 	}
