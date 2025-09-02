@@ -8,7 +8,7 @@ Offers the following endpoints for Article Resource access:
 - POST an article at `http://127.0.0.1:8080/users/article`
 - PUT an article at `http://127.0.0.1:8080/users/article`
 To check the format of requests as JSON and response check the screenshot located at: `src/main/resources`.
-- 
+
 ## Setup
 It uses springboot with maven for packaging, build and running.
 (Recommended) git clone <repo_url> to your local branch or pull with IDE supporting Git plugins.
