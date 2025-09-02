@@ -1,7 +1,7 @@
-package com.concretepage.service;
+package com.articlestore.service;
 
-import com.concretepage.dao.IArticleDAO;
-import com.concretepage.entity.Article;
+import com.articlestore.dao.IArticleDAO;
+import com.articlestore.entity.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

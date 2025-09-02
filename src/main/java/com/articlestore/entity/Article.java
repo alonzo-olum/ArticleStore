@@ -1,4 +1,4 @@
-package com.concretepage.entity;
+package com.articlestore.entity;
 
 public class Article { 
     private int articleId;  

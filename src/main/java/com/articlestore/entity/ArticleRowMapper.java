@@ -1,4 +1,4 @@
-package com.concretepage.entity;
+package com.articlestore.entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

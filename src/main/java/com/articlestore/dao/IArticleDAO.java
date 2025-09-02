@@ -1,6 +1,6 @@
-package com.concretepage.dao;
+package com.articlestore.dao;
 import java.util.List;
-import com.concretepage.entity.Article;
+import com.articlestore.entity.Article;
 public interface IArticleDAO {
     List<Article> getAllArticles();
     Article getArticleById(int articleId);

@@ -1,4 +1,4 @@
-package com.concretepage.dao;
+package com.articlestore.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,13 +8,14 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.concretepage.entity.Article;
-import com.concretepage.entity.ArticleRowMapper;
+import com.articlestore.entity.Article;
+import com.articlestore.entity.ArticleRowMapper;
 @Transactional
 @Repository
 public class ArticleDAO implements IArticleDAO {
 	@Autowired
     private JdbcTemplate jdbcTemplate;
+
 	@Override
 	public Article getArticleById(int articleId) {
 		String sql = "SELECT articleId, title, category FROM articles WHERE articleId = ?";
@@ -22,13 +23,15 @@ public class ArticleDAO implements IArticleDAO {
 		Article article = jdbcTemplate.queryForObject(sql, rowMapper, articleId);
 		return article;
 	}
+
 	@Override
 	public List<Article> getAllArticles() {
 		String sql = "SELECT articleId, title, category FROM articles";
         //RowMapper<Article> rowMapper = new BeanPropertyRowMapper<Article>(Article.class);
 		RowMapper<Article> rowMapper = new ArticleRowMapper();
 		return this.jdbcTemplate.query(sql, rowMapper);
-	}	
+	}
+
 	@Override
 	public void addArticle(Article article) {
 		//Add article
@@ -42,16 +45,19 @@ public class ArticleDAO implements IArticleDAO {
 		//Set article id 
 		article.setArticleId(articleId);
 	}
+
 	@Override
 	public void updateArticle(Article article) {
 		String sql = "UPDATE articles SET title=?, category=? WHERE articleId=?";
 		jdbcTemplate.update(sql, article.getTitle(), article.getCategory(), article.getArticleId());
 	}
+
 	@Override
 	public void deleteArticle(int articleId) {
 		String sql = "DELETE FROM articles WHERE articleId=?";
 		jdbcTemplate.update(sql, articleId);
 	}
+
 	@Override
 	public boolean articleExists(String title, String category) {
 		String sql = "SELECT count(*) FROM articles WHERE title = ? and category=?";
